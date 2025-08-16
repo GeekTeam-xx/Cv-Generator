@@ -1,5 +1,5 @@
 {
-  "description": "A modern native HTML or HTML5 project template",
+  "description": "A modern native HTML ",
   "required_fields": [],
   "required_files": [
     "index.html",
@@ -8,6 +8,6 @@
   ],
   "lang": "HTML",
   "framework": "HTML5",
-  "name": "html_template",
+  "name": "html-web",
   "scene": "default_html_project"
 }
