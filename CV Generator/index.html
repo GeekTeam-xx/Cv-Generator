@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Générateur de CV Professionnel</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-file-alt"></i> Générateur de CV</h1>
+            <p>Créez votre CV professionnel en quelques minutes</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <div class="container">
+            <button class="tab-btn active" data-tab="themes">1. CHOISIR UN THEME</button>
+            <button class="tab-btn" data-tab="input">2. SAISIR LES INFORMATIONS</button>
+            <button class="tab-btn" data-tab="preview">3. APERÇU ET TELECHARGEMENT</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Theme Selection -->
+            <section id="themes" class="tab-content active">
+                <h2>Choisissez votre thème</h2>
+                <div class="themes-grid">
+                    <div class="theme-card" data-theme="modern">
+                        <div class="theme-preview modern-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Moderne</h3>
+                        <p>Design épuré et contemporain</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="classic">
+                        <div class="theme-preview classic-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Classique</h3>
+                        <p>Style traditionnel et professionnel</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="creative">
+                        <div class="theme-preview creative-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Créatif</h3>
+                        <p>Design coloré et original</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="minimal">
+                        <div class="theme-preview minimal-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Minimaliste</h3>
+                        <p>Simple et élégant</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="executive">
+                        <div class="theme-preview executive-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Executive</h3>
+                        <p>Design haut de gamme pour cadres</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="tech">
+                        <div class="theme-preview tech-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Tech</h3>
+                        <p>Style moderne pour métiers techniques</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="elegant">
+                        <div class="theme-preview elegant-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Élégant</h3>
+                        <p>Raffiné et sophistiqué</p>
+                    </div>
+
+                    <div class="theme-card" data-theme="corporate">
+                        <div class="theme-preview corporate-preview">
+                            <div class="theme-header">
+                                <div class="theme-name">John Doe</div>
+                                <div class="theme-title">Développeur Web</div>
+                            </div>
+                            <div class="theme-content">
+                                <div class="theme-section">Expérience</div>
+                                <div class="theme-section">Formation</div>
+                            </div>
+                        </div>
+                        <h3>Corporate</h3>
+                        <p>Professionnel et structuré</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <button class="btn-primary" onclick="nextTab('input')">Continuer <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Input Method Selection -->
+            <section id="input" class="tab-content">
+                <h2>Comment souhaitez-vous remplir votre CV ?</h2>
+                <div class="input-method-selection">
+                    <div class="method-card" data-method="chatbot">
+                        <i class="fas fa-robot"></i>
+                        <h3>Assistant IA</h3>
+                        <p>Laissez notre chatbot vous guider pour créer votre CV en conversation naturelle</p>
+                        <button class="btn-secondary">Choisir l'IA</button>
+                    </div>
+                    <div class="method-card" data-method="form">
+                        <i class="fas fa-wpforms"></i>
+                        <h3>Formulaire progressif</h3>
+                        <p>Remplissez étape par étape avec notre formulaire structuré</p>
+                        <button class="btn-secondary">Choisir le formulaire</button>
+                    </div>
+                </div>
+
+                <!-- Chatbot Interface -->
+
+                <div id="chatbot-interface" class="input-interface hidden">
+                    <div class="chatbot-container">
+                        <div class="chat-header">
+                            <i class="fas fa-robot"></i>
+                            <span>Assistant CV</span>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot-message">
+                                <div class="message-content">
+                                    Bonjour ! Je vais vous aider à créer votre CV. Commençons par vos informations personnelles. Quel est votre nom complet ?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Tapez votre réponse...">
+                            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Interface -->
+                <div id="form-interface" class="input-interface hidden">
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">Informations personnelles</div>
+                        <div class="progress-step" data-step="2">Expérience</div>
+                        <div class="progress-step" data-step="3">Formation</div>
+                        <div class="progress-step" data-step="4">Compétences</div>
+                    </div>
+
+                    <form id="cvForm">
+                        <!-- Etape 1: Information personnelle -->
+                        <div class="form-step active" data-step="1">
+                            <h3>Informations personnelles</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="firstName">Prénom *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Nom *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Téléphone</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="address">Adresse</label>
+                                    <input type="text" id="address" name="address">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="title">Titre professionnel *</label>
+                                    <input type="text" id="title" name="title" placeholder="Ex: Développeur Web Senior" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="summary">Résumé professionnel</label>
+                                    <textarea id="summary" name="summary" rows="4" placeholder="Décrivez brièvement votre profil professionnel..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="photo">Photo de profil (optionnel)</label>
+                                    <input type="file" id="photo" name="photo" accept="image/*" onchange="handlePhotoUpload(event)">
+                                    <div id="photoPreview" class="photo-preview hidden">
+                                        <img id="previewImage" src="" alt="Aperçu photo">
+                                        <button type="button" class="btn-secondary" onclick="removePhoto()">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Etape 2: Experiences -->
+
+                        <div class="form-step" data-step="2">
+                            <h3>Expérience professionnelle</h3>
+                            <div id="experienceContainer">
+                                <div class="experience-item">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="jobTitle0">Poste</label>
+                                            <input type="text" id="jobTitle0" name="jobTitle0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company0">Entreprise</label>
+                                            <input type="text" id="company0" name="company0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="startDate0">Date de début</label>
+                                            <input type="date" id="startDate0" name="startDate0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endDate0">Date de fin</label>
+                                            <input type="date" id="endDate0" name="endDate0">
+                                        </div>
+                                        <div class="form-group full-width">
+                                            <label for="jobDescription0">Description</label>
+                                            <textarea id="jobDescription0" name="jobDescription0" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="addExperience()">
+                                <i class="fas fa-plus"></i> Ajouter une expérience
+                            </button>
+                        </div>
+
+                        <!-- Etape 3: Education -->
+                        <div class="form-step" data-step="3">
+                            <h3>Formation</h3>
+                            <div id="educationContainer">
+                                <div class="education-item">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="degree0">Diplôme</label>
+                                            <input type="text" id="degree0" name="degree0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="school0">École/Université</label>
+                                            <input type="text" id="school0" name="school0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="graduationYear0">Année d'obtention</label>
+                                            <input type="number" id="graduationYear0" name="graduationYear0" min="1950" max="2030">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="addEducation()">
+                                <i class="fas fa-plus"></i> Ajouter une formation
+                            </button>
+                        </div>
+
+                        <!-- Etape 4: Competences -->
+                        <div class="form-step" data-step="4">
+                            <h3>Compétences</h3>
+                            <div class="form-group">
+                                <label for="skills">Compétences (séparées par des virgules)</label>
+                                <textarea id="skills" name="skills" rows="4" placeholder="Ex: JavaScript, Python, Gestion d'équipe, Communication..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="languages">Langues</label>
+                                <textarea id="languages" name="languages" rows="3" placeholder="Ex: Français (natif), Anglais (courant), Espagnol (intermédiaire)..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn-secondary" id="prevBtn" onclick="changeStep(-1)">
+                                <i class="fas fa-arrow-left"></i> Précédent
+                            </button>
+                            <button type="button" class="btn-primary" id="nextBtn" onclick="changeStep(1)">
+                                Suivant <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="next-step">
+                    <button class="btn-primary" id="goToPreview" onclick="nextTab('preview')" style="display: none;">
+                        Voir l'aperçu <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Aperçu et Telechargement -->
+
+            <section id="preview" class="tab-content">
+                <h2>Aperçu de votre CV</h2>
+                <div class="preview-container">
+                    <div class="cv-preview" id="cvPreview">
+                        <!-- regarder le CV generé -->
+                    </div>
+                </div>
+                <div class="download-section">
+                    <button class="btn-primary" onclick="downloadPDF()">
+                        <i class="fas fa-download"></i> Télécharger en PDF
+                    </button>
+                    <button class="btn-secondary" onclick="editCV()">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Générateur de CV. Créez votre CV professionnel facilement.By GeekTeamxx</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
